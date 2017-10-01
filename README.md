@@ -1,6 +1,13 @@
 # Magento 2 Message Queue AMQP Backend
 AMQP message queue backend implementation for [Rcason_Mq](https://github.com/renatocason/magento2-module-mq).
 
+[![Build Status](https://travis-ci.org/renatocason/magento2-module-mq-amqp.svg?branch=master)](https://travis-ci.org/renatocason/magento2-module-mq-amqp)
+[![Coverage Status](https://coveralls.io/repos/github/renatocason/magento2-module-mq-amqp/badge.svg?branch=master)](https://coveralls.io/github/renatocason/magento2-module-mq-amqp?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/renatocason/magento2-module-mq-amqp/v/stable)](https://packagist.org/packages/renatocason/magento2-module-mq-amqp)
+[![Latest Unstable Version](https://poser.pugx.org/renatocason/magento2-module-mq-amqp/v/unstable)](https://packagist.org/packages/renatocason/magento2-module-mq-amqp)
+[![Total Downloads](https://poser.pugx.org/renatocason/magento2-module-mq-amqp/downloads)](https://packagist.org/packages/renatocason/magento2-module-mq-amqp)
+[![License](https://poser.pugx.org/renatocason/magento2-module-mq-amqp/license)](https://packagist.org/packages/renatocason/magento2-module-mq-amqp)
+
 ## Installation
 1. Require the module via Composer
 ```bash

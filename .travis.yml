@@ -1,0 +1,24 @@
+sudo: false
+
+language: php
+
+php:
+    - 7.0
+
+install:
+    - echo "{\"http-basic\":{\"repo.magento.com\":{\"username\":\"${MAGENTO_USERNAME}\",\"password\":\"${MAGENTO_PASSWORD}\"}}}" > ~/.composer/auth.json
+    - composer install --prefer-dist
+    - composer create-project --repository=https://repo.magento.com magento/marketplace-eqp marketplace-eqp
+
+script:
+    - php marketplace-eqp/vendor/bin/phpcs Model/ Test/  --standard=MEQP2 --severity=10
+    - php vendor/bin/phpmd Model/,Test/ text cleancode,codesize,controversial,design,naming,unusedcode --ignore-violations-on-exit
+    - php vendor/phpunit/phpunit/phpunit --coverage-clover Test/Unit/logs/clover.xml Test
+
+after_script:
+    - php vendor/bin/coveralls -v
+
+env:
+    global:
+        - secure: "nbX7CN5KiqNda8+iW5E5GQoYOGsnjpLv1Kh3bREq9pWt+ySFt4+ZpIfaOoMqovc4MdDndCUpH3UZJSxlCUACb4DE2PD2dBlMoWv+Y6z+duAgEmf17PA2fjfv6vk7M5a0SFHbZE8acGV3U5akuI7180+0JLb+PRIjG4WqtamanB0ezb/UUQJFMZ1lOS93v0FVewQpXOv65jLcUw3sdooV1yn9otUYgo7sqmvfDp0Q/+ZGhJp4fFCmAu8INPmC5RvA2HWbIJYvCXZ3GS8VC8+zloofkxlqZU9Il/zWDFzERGHQvKlKta3jhSZMf8E2eMsGwC0iVBQzjXvBNE+SrmYcRbu6Gx+PT6x07VMZ16QEmVYF6NLvagsMbEq0EPK/EDpFO7UzDWRYS2pP2qs59fne9yKoBiOX3OVhT8yG+5EjQjLrGPHRfcpXQqlGzfxEZKGA7/W1jISo7leH1Xq0NbDg/JdB10zWduB6gjlA/ISw8b/pMCiO1yRaNEFDurMlaQA7tgfdxtIlBTToJJR9Aw2cKtWewDmglRd+QjFROXiWvWCATb43TxLHNaAHSmQn+aPZU1x1B5frDC166uQasEgiv1z6XoHSAV6P6NMAEIDhKCVN5KcVcT5q2x8jpyb3BWU2MFsGMjjO5e+uRMkvZiZENzHiKMEyLKTEDAOxeFHVaeE="
+        - secure: "gwbjxm1Xlu5fFF9CrcV1zxFPgfy9UhHWv1gAswbDDehh5VxIuH3wendNUK9IK9NiTggd8Xdr1zA3sF3pMYDufuwlfytD2E2Iymq72n7xzfygu/E+i98bG+DEPuxHkDxIA6l4CZ3iD+Y9y7JgueseW7wHQB3ITXfQ9lLnsRIGKgbdI+X8M0QzlNsO3s+T8xQESiE8aggsD4kRD7D+SLjmIvbtKSxN2twIorGEnCTfr8BTrdKOTCQy3jAXLvm3YHFsVPsCeValsmQjnzPRqHUl8ASmEmxYGvQRy4SQqZn6jEyBJmRd6PdTIODA7LU+C/m6zAHFkGbuTf8w+/RlzqI2fqG8NPpUyMkT9eWUTIVJZabi0eL/yIFUBDdtUsLCYeelcX1cznmeieXiPHtlzx7xnYxOVhDKH0lwP9jK8nSRB5R9rKhrAVKoipYpXLDg/SlV/N6VC6wL9wVuo6hKb+ibS8wwlFBbXiKqfzW4zwaj0eTgeITAHGwNZYRFIpnLSew+2SfcSil1oUmhUs4DjMzQP2tWaL5vUmFYzccyJYVLim/CasygqXAktwJpOjSoS8xllbTIjvQlGiqq2duYaq6JPIp1rbfOs8skzeRXQIu2ppzioQmETEUc3EuXpFz8KwCEldL2Lrfy1IYvLuheJ7eU5J1yYI0sRUlAonQGAVUL6Ko="
