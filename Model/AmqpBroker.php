@@ -6,6 +6,9 @@ use PhpAmqpLib\Message\AMQPMessage;
 use Rcason\Mq\Api\Data\MessageEnvelopeInterface;
 use Rcason\Mq\Api\Data\MessageEnvelopeInterfaceFactory;
 
+/**
+ * @SuppressWarnings(PHPMD.LongVariable)
+ */
 class AmqpBroker implements \Rcason\Mq\Api\BrokerInterface
 {
     const BROKER_CODE = 'amqp';
@@ -93,12 +96,12 @@ class AmqpBroker implements \Rcason\Mq\Api\BrokerInterface
     /**
      * {@inheritdoc}
      */
-    public function reject(MessageEnvelopeInterface $message, $requeue = true)
+    public function reject(MessageEnvelopeInterface $message, bool $requeue)
     {
         // Get channel
         $channel = $this->client->getChannel();
         
-        // Send ACK
+        // Send Reject
         $channel->basic_reject($message->getBrokerRef(), $requeue);
     }
 }
