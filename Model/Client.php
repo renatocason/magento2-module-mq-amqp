@@ -20,17 +20,17 @@ class Client
     /**
      * @var AMQPStreamConnection
      */
-    protected $connection;
+    private $connection;
 
     /**
      * @var AMQPChannel
      */
-    protected $channel;
+    private $channel;
 
     /**
      * @var array
      */
-    protected $config;
+    private $config;
 
     /**
      * Configuration example:
@@ -58,6 +58,7 @@ class Client
     /**
      * Release resources
      *
+     * @codeCoverageIgnore
      * @return void
      */
     public function __destruct()
@@ -79,6 +80,7 @@ class Client
     /**
      * Return AMQP channel, opening connection if necessary
      *
+     * @codeCoverageIgnore
      * @return AMQPChannel
      */
     public function getChannel()
@@ -99,8 +101,10 @@ class Client
 
     /**
      * Close AMQP connection and channel, if open
+     * 
+     * @codeCoverageIgnore
      */
-    protected function closeConnection()
+    private function closeConnection()
     {
         if($this->channel) {
             $this->channel->close();

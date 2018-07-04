@@ -16,17 +16,17 @@ class AmqpBroker implements \Rcason\Mq\Api\BrokerInterface
     /**
      * @var Client
      */
-    protected $client;
+    private $client;
     
     /**
      * @var MessageEnvelopeInterfaceFactory
      */
-    protected $messageEnvelopeFactory;
+    private $messageEnvelopeFactory;
     
     /**
      * @var string
      */
-    protected $queueName;
+    private $queueName;
     
     /**
      * @param Client $client
@@ -42,7 +42,7 @@ class AmqpBroker implements \Rcason\Mq\Api\BrokerInterface
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function enqueue(MessageEnvelopeInterface $messageEnvelope)
     {
@@ -62,7 +62,7 @@ class AmqpBroker implements \Rcason\Mq\Api\BrokerInterface
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function peek()
     {
@@ -82,7 +82,7 @@ class AmqpBroker implements \Rcason\Mq\Api\BrokerInterface
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function acknowledge(MessageEnvelopeInterface $message)
     {
@@ -94,7 +94,7 @@ class AmqpBroker implements \Rcason\Mq\Api\BrokerInterface
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function reject(MessageEnvelopeInterface $message, bool $requeue)
     {
