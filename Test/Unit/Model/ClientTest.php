@@ -4,6 +4,8 @@ namespace Rcason\MqAmqp\Test\Unit\Model;
 
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Channel\AMQPChannel;
+
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\App\DeploymentConfig;
 use Rcason\MqAmqp\Model\Client;
 
@@ -56,7 +58,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
      */
     protected function setUp()
     {
-        $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
+        $objectManager = new ObjectManager($this);
         
         $this->streamConnection = $this->createMock(AMQPStreamConnection::class);
         $this->channel = $this->createMock(AMQPChannel::class);
