@@ -5,12 +5,16 @@ namespace Rcason\MqAmqp\Test\Unit\Model;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Message\AMQPMessage;
 
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Rcason\Mq\Api\BrokerInterface;
 use Rcason\Mq\Api\Data\MessageEnvelopeInterfaceFactory;
 use Rcason\Mq\Model\MessageEnvelope;
 use Rcason\MqAmqp\Model\AmqpBroker;
 use Rcason\MqAmqp\Model\Client;
 
+/**
+ * @SuppressWarnings(PHPMD.LongVariable)
+ */
 class AmqpBrokerTest extends \PHPUnit\Framework\TestCase
 {
     const QUEUE_NAME = 'test_queue';
@@ -48,7 +52,7 @@ class AmqpBrokerTest extends \PHPUnit\Framework\TestCase
      */
     protected function setUp()
     {
-        $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
+        $objectManager = new ObjectManager($this);
         
         $this->messageEnvelopeFactory = $this->getMockBuilder(MessageEnvelopeInterfaceFactory::class)
             ->disableOriginalConstructor()

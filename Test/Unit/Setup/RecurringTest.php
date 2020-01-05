@@ -3,6 +3,8 @@
 namespace Rcason\MqAmqp\Test\Unit\Setup;
 
 use PhpAmqpLib\Channel\AMQPChannel;
+
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
@@ -51,7 +53,7 @@ class RecurringTest extends \PHPUnit\Framework\TestCase
      */
     protected function setUp()
     {
-        $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
+        $objectManager = new ObjectManager($this);
         
         $this->config = $this->getMockForAbstractClass(ConfigInterface::class);
         $this->client = $this->getMockBuilder(Client::class)
