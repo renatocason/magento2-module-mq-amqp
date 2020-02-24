@@ -200,7 +200,7 @@ class AmqpBrokerTest extends \PHPUnit\Framework\TestCase
             ->with(self::MESSAGE_ID, false);
         
         $this->messageEnvelope->setBrokerRef(self::MESSAGE_ID);
-        $this->amqpBroker->reject($this->messageEnvelope, false);
+        $this->amqpBroker->reject($this->messageEnvelope, false, 5, 0);
     }
     
     /**
@@ -217,6 +217,6 @@ class AmqpBrokerTest extends \PHPUnit\Framework\TestCase
             ->with(self::MESSAGE_ID, true);
         
         $this->messageEnvelope->setBrokerRef(self::MESSAGE_ID);
-        $this->amqpBroker->reject($this->messageEnvelope, true);
+        $this->amqpBroker->reject($this->messageEnvelope, true, 5, 0);
     }
 }

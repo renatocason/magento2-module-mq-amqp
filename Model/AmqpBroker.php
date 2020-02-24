@@ -96,7 +96,7 @@ class AmqpBroker implements \Rcason\Mq\Api\BrokerInterface
     /**
      * @inheritdoc
      */
-    public function reject(MessageEnvelopeInterface $message, bool $requeue)
+    public function reject(MessageEnvelopeInterface $message, bool $requeue, int $maxRetries, int $retryInterval)
     {
         // Get channel
         $channel = $this->client->getChannel();
