@@ -9,8 +9,7 @@
     ],
     "require": {
         "php": "~7.1.0|~7.2.0|~7.3.0",
-        "magento/framework": "102.0.*",
-        "magento/module-store": "101.0.*",
+        "magento/framework": "100.1.*|101.0.*|102.0.*",
         "renatocason/magento2-module-mq": "~1.1.0",
         "php-amqplib/php-amqplib": "~2.7.3|~2.8.1"
     },
